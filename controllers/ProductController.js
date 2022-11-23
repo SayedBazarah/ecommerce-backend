@@ -1,19 +1,19 @@
 const ProductModel = require("../models/ProductModel");
-const validator = require("../util/ProductValidator");
 
 //CRUD Operations
 const getAllProducts = async (req, res) => {
   const products = await ProductModel.find({});
-  console.log("fetch in getAllProduct in Controller", products);
   res.json(products);
 };
-const getProductById = (req, res) => {
-  res.json({ message: "Products End Point Work" });
-};
-const getProductBySlug = (req, res) => {
+
+const getProductBySlug = async (req, res) => {
+  console.log(req.params.slug);
+  const product = await ProductModel.find({ "seo.slug": "long-tshirt-5" });
+  console.log(product);
   res.json({ message: "Products End Point Work" });
 };
 const addProduct = (req, res) => {
+  console.log(req.body);
   let product = new ProductModel(req.body);
   product
     .save()
@@ -29,7 +29,6 @@ const deleteProduct = (req, res) => {
 
 module.exports = {
   getAllProducts,
-  getProductById,
   getProductBySlug,
   addProduct,
   updateProduct,

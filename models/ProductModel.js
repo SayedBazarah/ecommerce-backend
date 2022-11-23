@@ -17,10 +17,10 @@ const ProductsSchema = new mongoose.Schema({
   reviews: [{ rate: Number, comment: String }],
   seo: {
     "meta-description": String,
-    slug: String,
   },
+  slug: String,
 });
+//product-1.p
+const ProductsModel = mongoose.model("Products", ProductsSchema);
 
-const Products = mongoose.model("Products", ProductsSchema);
-
-module.exports = Products;
+module.exports = ProductsModel;

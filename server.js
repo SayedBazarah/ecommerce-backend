@@ -29,7 +29,7 @@ const PORT = process.env.PORT || 3009;
 const ProuctsRoute = require("./routes/Products");
 const CategoriesRoute = require("./routes/Categories");
 const OrdersRoute = require("./routes/Orders");
-const CustomersRoute = require("./routes/Cutomers");
+const CustomersRoute = require("./routes/Customers");
 const ComplaintsRoute = require("./routes/Complaints");
 const AdminRoute = require("./routes/Admins");
 
