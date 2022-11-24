@@ -19,5 +19,5 @@ I have use **MVC pattern** to build this project, so code become more readable, 
 ## How to use this back-end code
 
 - First clone the code
-- run `> npm init`
+- run `> npm install`
 - create .env file and add **DB_URL=your Atlas MongoDB like**

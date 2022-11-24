@@ -1,8 +1,18 @@
+//Express
+const express = require("express");
+const app = express();
+
 //Essential Middle Wares & Enviroment
 const bodyParser = require("body-parser");
 const helmet = require("helmet");
 const auth = require("./middlewares/authorization");
 require("dotenv").config();
+
+//Middlewares
+app.use(auth);
+app.use(helmet());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 //Database Connection Setup
 const mongoose = require("mongoose");
@@ -18,10 +28,6 @@ mongoose
   })
   .catch((err) => console.log("Error in DB Connectin" + err));
 
-//Express
-const express = require("express");
-const app = express();
-
 //PORT
 const PORT = process.env.PORT || 3009;
 
@@ -29,22 +35,15 @@ const PORT = process.env.PORT || 3009;
 const ProuctsRoute = require("./routes/Products");
 const CategoriesRoute = require("./routes/Categories");
 const OrdersRoute = require("./routes/Orders");
-const CustomersRoute = require("./routes/Customers");
+const UserssRoute = require("./routes/Users");
 const ComplaintsRoute = require("./routes/Complaints");
 const AdminRoute = require("./routes/Admins");
 
-//Middlewares
-app.use(auth);
-app.use(helmet());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-//Routes
 app.use("/api/products", ProuctsRoute);
 app.use("/api/categories", CategoriesRoute);
 app.use("/api/orders", OrdersRoute);
-app.use("/api/customers", CustomersRoute);
-app.use("/api/complaintsRoute", ComplaintsRoute);
+app.use("/api/users", UserssRoute);
+app.use("/api/complaints", ComplaintsRoute);
 app.use("/api/admin", AdminRoute);
 
 //Server RUNNING
