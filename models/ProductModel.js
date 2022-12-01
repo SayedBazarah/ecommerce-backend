@@ -3,13 +3,13 @@ const mongoose = require("mongoose");
 
 const ProductsSchema = new mongoose.Schema({
   title: { type: String, required: true },
-  price: Number,
-  weight: Number,
-  thumbnail: String,
+  price: { type: Number, required: true },
+  weight: { type: Number, required: true },
+  thumbnail: { type: String, required: true },
   images: [String],
-  category: String,
+  category: { type: String, required: true },
   "create-date": String,
-  stock: Number,
+  stock: { type: Number, required: true },
   description: {
     short: String,
     long: String,
@@ -18,7 +18,7 @@ const ProductsSchema = new mongoose.Schema({
   seo: {
     "meta-description": String,
   },
-  slug: String,
+  slug: { type: String, required: true, unique: true },
 });
 //product-1.p
 const ProductsModel = mongoose.model("Products", ProductsSchema);

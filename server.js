@@ -5,11 +5,9 @@ const app = express();
 //Essential Middle Wares & Enviroment
 const bodyParser = require("body-parser");
 const helmet = require("helmet");
-const auth = require("./middlewares/authorization");
 require("dotenv").config();
 
 //Middlewares
-app.use(auth);
 app.use(helmet());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -29,7 +27,7 @@ mongoose
   .catch((err) => console.log("Error in DB Connectin" + err));
 
 //PORT
-const PORT = process.env.PORT || 3009;
+const PORT = process.env.PORT || 3000;
 
 //Routes
 const ProuctsRoute = require("./routes/Products");

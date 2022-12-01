@@ -1,5 +1,5 @@
 module.exports = (req, res, next) => {
-  //Authorization
+  console.log(req);
 
   console.log("Login is Auth");
   next();

@@ -5,13 +5,14 @@ const mongoose = require("mongoose");
 
 const AdminsSchema = new mongoose.Schema({
   name: String,
-  email: String,
-  password: String,
+  email: { type: String, unique: true },
+  password: { type: String, unique: true },
   thumbnail: String,
   major: {
     type: String,
     enum: ["admin", "moderator", "analyst"],
   },
+  required: ["name", "email", "password", "major"],
 });
 
 const AdminsModel = mongoose.model("Admins", AdminsSchema);

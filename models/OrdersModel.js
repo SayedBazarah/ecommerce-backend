@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
 const OrdersSchema = new mongoose.Schema({
-  "customer-id": "String",
-  amount: Number,
+  "customer-id": String,
+  amount: String,
   "shipping-address": {
     city: String,
     street: String,
@@ -28,6 +28,7 @@ const OrdersSchema = new mongoose.Schema({
       slug: String,
     },
   ],
+  required: ["products", "customer-id", "amount"],
 });
 
 const OrdersModule = mongoose.model("Orders", OrdersSchema);
