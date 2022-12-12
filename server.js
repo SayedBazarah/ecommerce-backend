@@ -27,22 +27,27 @@ mongoose
   .catch((err) => console.log("Error in DB Connectin" + err));
 
 //PORT
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3009;
 
 //Routes
 const ProuctsRoute = require("./routes/Products");
 const CategoriesRoute = require("./routes/Categories");
 const OrdersRoute = require("./routes/Orders");
-const UserssRoute = require("./routes/Users");
+const UsersRoute = require("./routes/Users");
 const ComplaintsRoute = require("./routes/Complaints");
 const AdminRoute = require("./routes/Admins");
+const LodinRoute = require("./routes/login");
+const DashboardRoute = require("./routes/dashboard");
 
-app.use("/api/products", ProuctsRoute);
-app.use("/api/categories", CategoriesRoute);
-app.use("/api/orders", OrdersRoute);
-app.use("/api/users", UserssRoute);
-app.use("/api/complaints", ComplaintsRoute);
+app.use("/api/product", ProuctsRoute);
+app.use("/api/category", CategoriesRoute);
+app.use("/api/order", OrdersRoute);
+app.use("/api/user", UsersRoute);
+app.use("/api/complain", ComplaintsRoute);
 app.use("/api/admin", AdminRoute);
+app.use("/api/login", LodinRoute);
+app.use("/api/dashboard", DashboardRoute);
+
 
 //Server RUNNING
 app.listen(PORT, () =>

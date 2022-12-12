@@ -1,13 +1,17 @@
 const AdminsController = require("../controllers/AdminsController");
 const express = require("express");
 
+//Auth
+const auth = require('../middlewares/AdminMWValidator')
 const router = express.Router();
 
 //End-Points for Admins -> /api/admins
-router.post("/", AdminsController.addAdmin);
-router.get("/", AdminsController.getAllAdmins);
-router.get("/:id", AdminsController.getAdminById);
-router.put("/:id", AdminsController.updateAdmin);
-router.delete("/:id", AdminsController.deleteAdmin);
+//Login as admin
+router.post("/",auth, AdminsController.addAdmin);
+
+router.get("/",auth, AdminsController.getAllAdmins);
+router.get("/:id",auth, AdminsController.getAdminById);
+router.put("/:id",auth, AdminsController.updateAdmin);
+router.delete("/:id",auth, AdminsController.deleteAdmin);
 
 module.exports = router;
